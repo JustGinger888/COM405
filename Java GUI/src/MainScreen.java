@@ -55,10 +55,11 @@ public class MainScreen extends JFrame implements ActionListener
         txtCarModel = new JTextField();
 
         lblStatus = new JLabel(carPark.EmptySpaces()+" empty spaces.");
+
         btnAdd = new JButton("Add Car");
         btnAdd.addActionListener(this);
         btnRemove = new JButton("Remove Car");
-        btnAdd.addActionListener(this);
+        btnRemove.addActionListener(this);
     }
 
     public void layoutComponents() {
@@ -129,9 +130,12 @@ public class MainScreen extends JFrame implements ActionListener
             String make = txtCarMake.getText();
             String model = txtCarModel.getText();
 
+
             if(carPark.AddCar(regNum, color, make, model))
             {
+                lblStatus.setText(carPark.EmptySpaces()+" empty spaces.");
                 JOptionPane.showMessageDialog(null, "Car has been added");
+
             }
             else
             {
@@ -141,11 +145,17 @@ public class MainScreen extends JFrame implements ActionListener
         else if(ev.getSource().equals(btnRemove))
         {
             String regNum = txtRegNum.getText();
-            if (regNum != null){
-
+            if (!regNum.equals("")) {
+                if (carPark.RemoveCar(regNum)) {
+                    lblStatus.setText(carPark.EmptySpaces()+" empty spaces.");
+                    JOptionPane.showMessageDialog(null, "Car has been removed");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Could not find Reg. Number");
+                }
             }
             else {
-
+                JOptionPane.showMessageDialog(null, "Enter a Reg. Number");
             }
         }
     }

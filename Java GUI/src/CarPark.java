@@ -15,6 +15,7 @@ public class CarPark {
 
     public int EmptySpaces()
     {
+        emptySpaces = 0;
         for (int i = 0; i < cars.length; i++) {
             if (cars[i] == null) {
                 emptySpaces++;
@@ -23,13 +24,15 @@ public class CarPark {
         return emptySpaces;
     }
 
-    public void RemoveCar(String regNumIN){
+    public boolean RemoveCar(String regNumIN){
         for (int i = 0; i < cars.length; i++) {
-            if (cars[i].getCarRegNo().equals(regNumIN)) {
+            if (cars[i] != null && cars[i].getCarRegNo().equals(regNumIN)) {
                 cars[i] = null;
-                break;
+                return true;
             }
         }
+        return false;
     }
 }
+
 
