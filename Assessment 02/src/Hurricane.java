@@ -32,17 +32,17 @@ public class Hurricane extends Storm{
     protected String CategoryAdvice(String stormWindSpeedIn, String stormTempIn) {
         switch (Calculations(stormWindSpeedIn, stormTempIn)){
             case 1:
-                return "";
+                return "Category 1\nClose storm shutters and stay away from windows";
             case 2:
-                return "";
+                return "Category 2\nClose storm shutters and stay away from windows";
             case 3:
-                return "";
+                return "Category 3\nCoastal regions are encouraged to evacuate";
             case 4:
-                return "";
+                return "Category 4\nEvacuate";
             case 5:
-                return "";
+                return "Category 5\nEvacuate";
             case 6:
-                return "";
+                return "Tropical Storm\nClose storm shutters and stay away from windows";
         }
         return "Error";
     }
