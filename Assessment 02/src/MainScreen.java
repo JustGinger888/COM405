@@ -236,10 +236,10 @@ public class MainScreen extends JFrame implements ActionListener
 
         if (ev.getSource().equals(btnAdd))
         {
-            //operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm);
-            int confirmed = JOptionPane.showConfirmDialog(null,
-                    operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm),
-                    "Exit Program Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            jtaDisplay.setText(null);
+            int confirmed = JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Exit Program Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            Storm tmpValue = operations.getCurrentStorms().get(0);
+            jtaDisplay.append(tmpValue.CategoryAdvice(stormWindSpeed,stormTemp)+"\nName: "+stormName+"\nWind: "+stormWindSpeed+"\nTemp: "+stormTemp);
         }
 
         else if(ev.getSource().equals(btnRemove))

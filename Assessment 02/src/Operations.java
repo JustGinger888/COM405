@@ -5,10 +5,9 @@ public class Operations {
     private Validation validation = new Validation();
 
     private ArrayList<Storm> currentStorms = new ArrayList<Storm>();
-
-    private Hurricane hurricane = new Hurricane();
-    private Tornado tornado = new Tornado();
-    private Blizzard blizzard = new Blizzard();
+    public ArrayList<Storm> getCurrentStorms() {
+        return currentStorms;
+    }
 
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
@@ -55,6 +54,10 @@ public class Operations {
     }
 
     public void StormAddition(String stormName, String stormWindSpeed, String stormTemp, int StormType){
+        Hurricane hurricane = new Hurricane(stormName,stormWindSpeed,stormTemp);
+        Tornado tornado = new Tornado(stormName,stormWindSpeed,stormTemp);
+        Blizzard blizzard = new Blizzard(stormName,stormWindSpeed,stormTemp);
+
         switch (StormType){
             case 1:
                 currentStorms.add(hurricane);
@@ -66,7 +69,5 @@ public class Operations {
                 currentStorms.add(blizzard);
                 break;
         }
-            System.out.println(currentStorms);
-
     }
 }
