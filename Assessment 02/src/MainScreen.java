@@ -1,15 +1,13 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 
 public class MainScreen extends JFrame implements ActionListener
 {
-    private Storm storm;
-
+    private Operations operations = new Operations();
     private GridBagConstraints constraints;
 
     private JFrame frame;
@@ -40,7 +38,6 @@ public class MainScreen extends JFrame implements ActionListener
 
     public MainScreen()
     {
-        ArrayList<Storm> currentStorms = new ArrayList<Storm>();
         this.setTitle("Storm Advice Centre");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
@@ -52,7 +49,7 @@ public class MainScreen extends JFrame implements ActionListener
         initComponents();
 
         // Create Panels
-        createStromChoicePanel();
+        createStormChoicePanel();
         createStormPanel();
         createButtonPanel();
         createDisplayPanel();
@@ -105,7 +102,7 @@ public class MainScreen extends JFrame implements ActionListener
         pnlDisplay = new JPanel(new GridBagLayout());
     }
 
-    private void createStromChoicePanel(){
+    private void createStormChoicePanel(){
         GridBagConstraints constraints = new GridBagConstraints();
         pnlStormChoice.setLayout(new GridBagLayout());
         constraints.anchor = GridBagConstraints.WEST;
@@ -232,9 +229,17 @@ public class MainScreen extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent ev)
     {
+        String stormName = txtStormName.getText();
+        String stormWindSpeed = txtStormWind.getText();
+        String stormTemp = txtStormTemp.getText();
+        String typeOfStorm = cbxStormType.getSelectedItem().toString();
+
         if (ev.getSource().equals(btnAdd))
         {
-
+            //operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm);
+            int confirmed = JOptionPane.showConfirmDialog(null,
+                    operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm),
+                    "Exit Program Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
         }
 
         else if(ev.getSource().equals(btnRemove))
