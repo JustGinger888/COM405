@@ -28,19 +28,19 @@ public class Tornado extends Storm {
     protected String CategoryAdvice(String stormWindSpeedIn, String stormTempIn) {
         switch (Calculations(stormWindSpeedIn, stormTempIn)) {
             case 0:
-                return "";
+                return "F0\nFind safe room/shelter, shield yourself from debris";
             case 1:
-                return "";
+                return "F1\nFind safe room/shelter, shield yourself from debris";
             case 2:
-                return "";
+                return "F2\nFind underground shelter, crouch near to the floor covering your head with your hand";
             case 3:
-                return "";
+                return "F3\nFind underground shelter, crouch near to the floor covering your head with your hand";
             case 4:
-                return "";
+                return "F4\nFind underground shelter, crouch near to the floor covering your head with your hand";
             case 5:
-                return "";
+                return "F5\nFind underground shelter, crouch near to the floor covering your head with your hand";
             case 6:
-                return "";
+                return "Unclassified\nThere is no need to panic";
         }
         return "Error";
 
