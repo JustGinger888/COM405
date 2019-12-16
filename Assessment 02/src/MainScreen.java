@@ -7,6 +7,12 @@ import javax.swing.border.EtchedBorder;
 
 public class MainScreen extends JFrame implements ActionListener
 {
+    String stormName;
+    String stormWindSpeed;
+    String stormTemp;
+    String typeOfStorm;
+    int dplValue=0;
+
     private Operations operations = new Operations();
     private GridBagConstraints constraints;
 
@@ -227,19 +233,22 @@ public class MainScreen extends JFrame implements ActionListener
 
     }
 
+    public void ActionVariables() {
+        stormName = txtStormName.getText();
+        stormWindSpeed = txtStormWind.getText();
+        stormTemp = txtStormTemp.getText();
+        typeOfStorm = cbxStormType.getSelectedItem().toString();
+    }
     public void actionPerformed(ActionEvent ev)
     {
-        String stormName = txtStormName.getText();
-        String stormWindSpeed = txtStormWind.getText();
-        String stormTemp = txtStormTemp.getText();
-        String typeOfStorm = cbxStormType.getSelectedItem().toString();
-
+        ActionVariables();
         if (ev.getSource().equals(btnAdd))
         {
             jtaDisplay.setText(null);
             int confirmed = JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Exit Program Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-            Storm tmpValue = operations.getCurrentStorms().get(0);
-            jtaDisplay.append(tmpValue.CategoryAdvice(stormWindSpeed,stormTemp)+"\nName: "+stormName+"\nWind: "+stormWindSpeed+"\nTemp: "+stormTemp);
+            Storm dplStorm = operations.getCurrentStorms().get(dplValue);
+            dplValue++;
+            jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed,stormTemp)+"\nName: "+stormName+"\nWind: "+stormWindSpeed+"\nTemp: "+stormTemp);
         }
 
         else if(ev.getSource().equals(btnRemove))

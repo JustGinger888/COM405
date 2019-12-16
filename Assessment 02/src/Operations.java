@@ -9,6 +9,7 @@ public class Operations {
         return currentStorms;
     }
 
+
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
             if (StormSize()){
