@@ -9,7 +9,7 @@ import javax.swing.border.EtchedBorder;
 public class MainScreen extends JFrame implements ActionListener
 {
     private Storm storm;
-    private ArrayList<Storm> currentStorms = new ArrayList<Storm>();
+
     private GridBagConstraints constraints;
 
     private JFrame frame;
@@ -18,6 +18,7 @@ public class MainScreen extends JFrame implements ActionListener
     private JLabel lblStormName;
     private JLabel lblStormWind;
     private JLabel lblStormTemp;
+    private JLabel lblStormType;
 
     private JTextField txtStormName;
     private JTextField txtStormWind;
@@ -28,14 +29,18 @@ public class MainScreen extends JFrame implements ActionListener
     private JButton btnSearch;
     private JButton btnSave;
 
+    private JComboBox cbxStormType;
+
     private JTextArea jtaDisplay;
 
+    private JPanel pnlStormChoice;
     private JPanel pnlStormInfo;
     private JPanel pnlButtons;
     private JPanel pnlDisplay;
 
     public MainScreen()
     {
+        ArrayList<Storm> currentStorms = new ArrayList<Storm>();
         this.setTitle("Storm Advice Centre");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
@@ -47,6 +52,7 @@ public class MainScreen extends JFrame implements ActionListener
         initComponents();
 
         // Create Panels
+        createStromChoicePanel();
         createStormPanel();
         createButtonPanel();
         createDisplayPanel();
@@ -58,6 +64,7 @@ public class MainScreen extends JFrame implements ActionListener
         lblStormName = new JLabel("Storm Name:");
         lblStormWind = new JLabel("Wind Speed:");
         lblStormTemp = new JLabel("Temperature:");
+        lblStormType = new JLabel("Choose a TYPE to add NEW Storm");
 
         //Text Fields
         txtStormName = new JTextField(20);
@@ -74,19 +81,52 @@ public class MainScreen extends JFrame implements ActionListener
         btnSearch = new JButton("Search Storm");
         btnSearch.setPreferredSize(new Dimension(148, 28));
         btnSearch.addActionListener(this);
-        btnSave = new JButton("Save Storm");
+        btnSave = new JButton("Update Storm");
         btnSave.setPreferredSize(new Dimension(148, 28));
         btnSave.addActionListener(this);
 
-        //TextArea
+        //Combo Box
+        cbxStormType = new JComboBox();
+        cbxStormType.addItem("--Select--");
+        cbxStormType.addItem("Hurricane");
+        cbxStormType.addItem("Tornado");
+        cbxStormType.addItem("Blizzard");
+        cbxStormType.setBackground(Color.WHITE);
+
+        //Text Area
         jtaDisplay = new JTextArea(5,30);
         jtaDisplay.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         jtaDisplay.setEditable(false);
 
         //Panels
+        pnlStormChoice = new JPanel(new GridBagLayout());
         pnlStormInfo = new JPanel(new GridBagLayout());
         pnlButtons = new JPanel(new GridBagLayout());
         pnlDisplay = new JPanel(new GridBagLayout());
+    }
+
+    private void createStromChoicePanel(){
+        GridBagConstraints constraints = new GridBagConstraints();
+        pnlStormChoice.setLayout(new GridBagLayout());
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets = new Insets(10, 10, 10, 10);
+
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridy = 0;
+        constraints.gridx = 0;
+        pnlStormChoice.add(lblStormType, constraints);
+
+        //Storm Add Button
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridy = 0;
+        constraints.gridx = 1;
+        pnlStormChoice.add(cbxStormType, constraints);
+
+        // Border
+        pnlStormChoice.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createEtchedBorder(), "Storm Types"));
+
+        this.add(pnlStormChoice);
     }
 
     private void createStormPanel() {
@@ -196,10 +236,22 @@ public class MainScreen extends JFrame implements ActionListener
         {
 
         }
+
         else if(ev.getSource().equals(btnRemove))
         {
 
         }
+
+        else if(ev.getSource().equals(btnSearch))
+        {
+
+        }
+
+        else if(ev.getSource().equals(btnSave))
+        {
+
+        }
+
     }
 
 }
