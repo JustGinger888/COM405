@@ -4,7 +4,7 @@ public class Operations {
 
     private Validation validation = new Validation();
 
-    private int indexStormRemove;
+    public int indexStorm;
 
     private ArrayList<Storm> currentStorms = new ArrayList<Storm>();
     public ArrayList<Storm> getCurrentStorms() {
@@ -78,7 +78,7 @@ public class Operations {
     public String RemoveOperationControl(String stormName){
         //Add double name checker
         if (ValidateName(stormName)){
-            currentStorms.remove(indexStormRemove);
+            currentStorms.remove(indexStorm);
             System.out.println(currentStorms);
             return "Select The Type Of Storm";
         }
@@ -88,10 +88,18 @@ public class Operations {
     public boolean ValidateName(String stormName) {
         for (int i = 0; i < currentStorms.size(); i++) {
             if (currentStorms.get(i).stormName.equals(stormName)) {
-                indexStormRemove = i;
+                indexStorm = i;
                 return true;
             }
         }
         return false;
+    }
+
+    public String SearchOperationControl(String stormName){
+        if (ValidateName(stormName)){
+            System.out.println(currentStorms);
+            return "Displaying Storm Information";
+        }
+        return "Failed To Find Storm Name";
     }
 }

@@ -245,8 +245,7 @@ public class MainScreen extends JFrame implements ActionListener
 
     public void actionPerformed(ActionEvent ev) {
         ActionVariables();
-        if (ev.getSource().equals(btnAdd))
-        {
+        if (ev.getSource().equals(btnAdd)) {
             jtaDisplay.setText(null);
             int confirmed = JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             Storm dplStorm = operations.getCurrentStorms().get(dplValue);
@@ -254,20 +253,20 @@ public class MainScreen extends JFrame implements ActionListener
             jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed,stormTemp)+"\nName: "+stormName+"\nWind: "+stormWindSpeed+"\nTemp: "+stormTemp);
         }
 
-        else if(ev.getSource().equals(btnRemove))
-        {
+        else if(ev.getSource().equals(btnRemove)) {
             jtaDisplay.setText(null);
             int confirmed = JOptionPane.showConfirmDialog(null, operations.RemoveOperationControl(stormName), "Remove Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             dplValue--;
         }
 
-        else if(ev.getSource().equals(btnSearch))
-        {
-
+        else if(ev.getSource().equals(btnSearch)){
+            jtaDisplay.setText(null);
+            int confirmed = JOptionPane.showConfirmDialog(null, operations.SearchOperationControl(stormName), "Search Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            Storm dplStorm = operations.getCurrentStorms().get(operations.indexStorm);
+            jtaDisplay.append(dplStorm.CategoryAdvice(dplStorm.stormWindSpeed,dplStorm.stormTemp)+"\nName: "+dplStorm.stormName+"\nWind: "+dplStorm.stormWindSpeed+"\nTemp: "+dplStorm.stormTemp);
         }
 
-        else if(ev.getSource().equals(btnSave))
-        {
+        else if(ev.getSource().equals(btnSave)) {
 
         }
 
