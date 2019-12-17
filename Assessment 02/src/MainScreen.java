@@ -248,7 +248,7 @@ public class MainScreen extends JFrame implements ActionListener
         if (ev.getSource().equals(btnAdd))
         {
             jtaDisplay.setText(null);
-            int confirmed = JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Exit Program Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            int confirmed = JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             Storm dplStorm = operations.getCurrentStorms().get(dplValue);
             dplValue++;
             jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed,stormTemp)+"\nName: "+stormName+"\nWind: "+stormWindSpeed+"\nTemp: "+stormTemp);
@@ -256,7 +256,9 @@ public class MainScreen extends JFrame implements ActionListener
 
         else if(ev.getSource().equals(btnRemove))
         {
-
+            jtaDisplay.setText(null);
+            int confirmed = JOptionPane.showConfirmDialog(null, operations.RemoveOperationControl(stormName), "Remove Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            dplValue--;
         }
 
         else if(ev.getSource().equals(btnSearch))

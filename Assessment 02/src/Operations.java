@@ -4,6 +4,8 @@ public class Operations {
 
     private Validation validation = new Validation();
 
+    private int indexStormRemove;
+
     private ArrayList<Storm> currentStorms = new ArrayList<Storm>();
     public ArrayList<Storm> getCurrentStorms() {
         return currentStorms;
@@ -15,6 +17,7 @@ public class Operations {
             if (StormSize()){
                 if (StormType(typeOfStorm) != 4){
                     StormAddition(stormName, stormWindSpeed, stormTemp, StormType(typeOfStorm));
+                    System.out.println(currentStorms);
                     return "Added Storm Successfully";
                 }
                 return "Select The Type Of Storm";
@@ -70,5 +73,25 @@ public class Operations {
                 currentStorms.add(blizzard);
                 break;
         }
+    }
+
+    public String RemoveOperationControl(String stormName){
+        //Add double name checker
+        if (ValidateName(stormName)){
+            currentStorms.remove(indexStormRemove);
+            System.out.println(currentStorms);
+            return "Select The Type Of Storm";
+        }
+        return "Failed To Find Storm Name";
+    }
+
+    public boolean ValidateName(String stormName) {
+        for (int i = 0; i < currentStorms.size(); i++) {
+            if (currentStorms.get(i).stormName.equals(stormName)) {
+                indexStormRemove = i;
+                return true;
+            }
+        }
+        return false;
     }
 }
