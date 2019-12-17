@@ -31,7 +31,9 @@ public class MainScreen extends JFrame implements ActionListener
     private JButton btnAdd;
     private JButton btnRemove;
     private JButton btnSearch;
+    private JButton btnUpdate;
     private JButton btnSave;
+    private JButton btnEscape;
 
     private JComboBox cbxStormType;
 
@@ -87,9 +89,20 @@ public class MainScreen extends JFrame implements ActionListener
         btnSearch = new JButton("Search Storm");
         btnSearch.setPreferredSize(new Dimension(148, 28));
         btnSearch.addActionListener(this);
-        btnSave = new JButton("Update Storm");
+        btnUpdate = new JButton("Update Storm");
+        btnUpdate.setPreferredSize(new Dimension(148, 28));
+        btnUpdate.addActionListener(this);
+        btnSave = new JButton("Save Update");
         btnSave.setPreferredSize(new Dimension(148, 28));
         btnSave.addActionListener(this);
+        btnSave.setEnabled(false);
+        btnSave.setBackground(Color.LIGHT_GRAY);
+        btnEscape = new JButton("Cancel Update");
+        btnEscape.setPreferredSize(new Dimension(148, 28));
+        btnEscape.addActionListener(this);
+        btnEscape.setEnabled(false);
+        btnEscape.setBackground(Color.LIGHT_GRAY);
+
 
         //Combo Box
         cbxStormType = new JComboBox();
@@ -186,7 +199,6 @@ public class MainScreen extends JFrame implements ActionListener
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets = new Insets(10, 10, 10, 10);
         constraints.gridwidth = 1;
-
         //Storm Add Button
         constraints.fill = GridBagConstraints.NONE;
         constraints.gridy = 0;
@@ -197,7 +209,6 @@ public class MainScreen extends JFrame implements ActionListener
         constraints.gridx = 1;
         pnlButtons.add(btnRemove, constraints);
 
-
         //Storm Edit Button
         constraints.fill = GridBagConstraints.NONE;
         constraints.gridy = 1;
@@ -206,7 +217,17 @@ public class MainScreen extends JFrame implements ActionListener
         //Storm Save Button
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 1;
+        pnlButtons.add(btnUpdate, constraints);
+
+        //Storm Edit Button
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.gridy = 2;
+        constraints.gridx = 0;
         pnlButtons.add(btnSave, constraints);
+        //Storm Save Button
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 1;
+        pnlButtons.add(btnEscape, constraints);
 
         // Border
         pnlButtons.setBorder(BorderFactory.createTitledBorder(
@@ -266,7 +287,7 @@ public class MainScreen extends JFrame implements ActionListener
             jtaDisplay.append(dplStorm.CategoryAdvice(dplStorm.stormWindSpeed,dplStorm.stormTemp)+"\nName: "+dplStorm.stormName+"\nWind: "+dplStorm.stormWindSpeed+"\nTemp: "+dplStorm.stormTemp);
         }
 
-        else if(ev.getSource().equals(btnSave)) {
+        else if(ev.getSource().equals(btnUpdate)) {
 
         }
 
