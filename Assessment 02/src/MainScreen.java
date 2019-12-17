@@ -59,6 +59,9 @@ public class MainScreen extends JFrame implements ActionListener
         createStormPanel();
         createButtonPanel();
         createDisplayPanel();
+
+        this.pack();
+        this.setLocationRelativeTo(null);
     }
 
     public void initComponents() {
@@ -239,8 +242,8 @@ public class MainScreen extends JFrame implements ActionListener
         stormTemp = txtStormTemp.getText();
         typeOfStorm = cbxStormType.getSelectedItem().toString();
     }
-    public void actionPerformed(ActionEvent ev)
-    {
+
+    public void actionPerformed(ActionEvent ev) {
         ActionVariables();
         if (ev.getSource().equals(btnAdd))
         {
