@@ -124,6 +124,21 @@ public class MainScreen extends JFrame implements ActionListener
         pnlDisplay = new JPanel(new GridBagLayout());
     }
 
+    private void UpdateComponents(){
+        btnRemove.setEnabled(false);
+        btnRemove.setBackground(Color.LIGHT_GRAY);
+        btnSearch.setEnabled(false);
+        btnSearch.setBackground(Color.LIGHT_GRAY);
+        btnUpdate.setEnabled(false);
+        btnUpdate.setBackground(Color.LIGHT_GRAY);
+        btnAdd.setEnabled(false);
+        btnAdd.setBackground(Color.LIGHT_GRAY);
+        btnSave.setEnabled(true);
+        btnSave.setBackground(null);
+        btnEscape.setEnabled(true);
+        btnEscape.setBackground(null);
+    }
+
     private void createStormChoicePanel(){
         GridBagConstraints constraints = new GridBagConstraints();
         pnlStormChoice.setLayout(new GridBagLayout());
@@ -289,6 +304,7 @@ public class MainScreen extends JFrame implements ActionListener
 
         else if(ev.getSource().equals(btnUpdate)) {
 
+            UpdateComponents();
         }
 
     }

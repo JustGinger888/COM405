@@ -102,4 +102,8 @@ public class Operations {
         }
         return "Failed To Find Storm Name";
     }
+
+    public String RemoveOperationControl(){
+        
+    }
 }
