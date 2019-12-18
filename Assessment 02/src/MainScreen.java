@@ -12,6 +12,7 @@ public class MainScreen extends JFrame implements ActionListener
     String stormTemp;
     String typeOfStorm;
     int dplValue=0;
+    int updValue=0;
 
     private Operations operations = new Operations();
     private GridBagConstraints constraints;
@@ -137,6 +138,8 @@ public class MainScreen extends JFrame implements ActionListener
         btnSave.setBackground(null);
         btnEscape.setEnabled(true);
         btnEscape.setBackground(null);
+        cbxStormType.setEnabled(false);
+        cbxStormType.setBackground(Color.lightGray);
     }
 
     private void createStormChoicePanel(){
@@ -304,6 +307,13 @@ public class MainScreen extends JFrame implements ActionListener
 
         else if(ev.getSource().equals(btnUpdate)) {
 
+            jtaDisplay.setText(null);
+            int confirmed = JOptionPane.showConfirmDialog(null, operations.SearchOperationControl(stormName), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            Storm updValue = operations.getCurrentStorms().get(operations.indexStorm);
+            jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed,updValue.stormTemp)+"\nName: "+updValue.stormName+"\nWind: "+updValue.stormWindSpeed+"\nTemp: "+updValue.stormTemp);
+            txtStormName.setText(updValue.stormName);
+            txtStormWind.setText(updValue.stormWindSpeed);
+            txtStormTemp.setText(updValue.stormTemp);
             UpdateComponents();
         }
 

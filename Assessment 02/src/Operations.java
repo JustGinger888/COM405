@@ -103,7 +103,11 @@ public class Operations {
         return "Failed To Find Storm Name";
     }
 
-    public String RemoveOperationControl(){
-        
+    public String UpdateOperationControl(String stormName){
+        if (ValidateName(stormName)){
+            System.out.println(currentStorms);
+            return "Displaying Storm Information for Update";
+        }
+        return "Failed To Find Storm Name";
     }
 }
