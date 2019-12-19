@@ -110,4 +110,21 @@ public class Operations {
         }
         return "Failed To Find Storm Name";
     }
+
+    public String UpdateSaveOperationControl(String stormName, String stormWindSpeed, String stormTemp, int dplValue){
+        if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
+            SaveOperation(stormName, stormWindSpeed, stormTemp,dplValue);
+            System.out.println(currentStorms);
+            return "Added Storm Successfully";
+        }
+        return "Failed To Verify Input, Ensure Everything Is Added Correct";
+    }
+
+    public void SaveOperation(String stormNameIn, String stormWindSpeedIn, String stormTempIn, int dplValue){
+        Storm sveStrom= currentStorms.get(dplValue);
+        sveStrom.stormName = stormNameIn;
+        sveStrom.stormWindSpeed = stormWindSpeedIn;
+        sveStrom.stormTemp = stormTempIn;
+        currentStorms.set(dplValue, sveStrom);
+    }
 }
