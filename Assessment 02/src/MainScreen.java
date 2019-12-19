@@ -314,9 +314,19 @@ public class MainScreen extends JFrame implements ActionListener
             txtStormName.setText(updValue.stormName);
             txtStormWind.setText(updValue.stormWindSpeed);
             txtStormTemp.setText(updValue.stormTemp);
+            UpdateActionPerformed(ev, dplValue);
             UpdateComponents();
         }
 
+    }
+
+    public void UpdateActionPerformed(ActionEvent ev, int dplValue){
+        if (ev.getSource().equals(btnSave)){
+
+        }
+        else if (ev.getSource().equals(btnUpdate)){
+
+        }
     }
 
 }
