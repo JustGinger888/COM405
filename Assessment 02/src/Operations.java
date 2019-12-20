@@ -14,12 +14,12 @@ public class Operations {
         return currentStorms;
     }
 
-
+    //ADDING a Storm to ArrayList
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (StormSize()){
-                if (StormType(typeOfStorm) != 4){
-                    StormAddition(stormName, stormWindSpeed, stormTemp, StormType(typeOfStorm));
+            if (validation.ValidateStormSize(currentStorms)){
+                if (validation.ValidateStormType(typeOfStorm) != 4){
+                    StormAddition(stormName, stormWindSpeed, stormTemp, validation.ValidateStormType(typeOfStorm));
                     System.out.println(currentStorms);
                     return "Added Storm Successfully";
                 }
@@ -28,36 +28,6 @@ public class Operations {
             return "Storm Exceeds Maximum Array Size";
         }
         return "Failed To Verify Input, Ensure Everything Is Added Correct";
-    }
-
-    public boolean ValidateInput(String stormName, String stormWindSpeed, String stormTemp){
-        if (validation.ValidateString(stormName) && validation.ValidateInteger(stormWindSpeed) && validation.ValidateInteger(stormTemp)){
-            return true;
-        }
-        return false;
-    }
-
-    public boolean StormSize(){
-        if (currentStorms.size() >= 20){
-            return false;
-        }
-        return true;
-    }
-
-    public int StormType(String typeOfStorm){
-        switch(typeOfStorm){
-            case "Hurricane":
-                return 1;
-
-            case "Tornado":
-                return 2;
-
-            case "Blizzard":
-                return 3;
-
-            default:
-                return 4;
-        }
     }
 
     public void StormAddition(String stormName, String stormWindSpeed, String stormTemp, int StormType){
@@ -77,46 +47,45 @@ public class Operations {
                 break;
         }
     }
+    //ADDING a Storm to ArrayList
 
+
+    //REMOVING a Storm from ArrayList
     public String RemoveOperationControl(String stormName){
         //Add double name checker
-        if (ValidateName(stormName)){
+        if (LocateIndex(stormName)){
             currentStorms.remove(indexStorm);
             System.out.println(currentStorms);
             return "Select The Type Of Storm";
         }
         return "Failed To Find Storm Name";
     }
+    //REMOVING a Storm from ArrayList
 
-    public boolean ValidateName(String stormName) {
-        for (int i = 0; i < currentStorms.size(); i++) {
-            if (currentStorms.get(i).stormName.equals(stormName)) {
-                indexStorm = i;
-                return true;
-            }
-        }
-        return false;
-    }
-
+    //SEARCHING for Storm in ArrayList
     public String SearchOperationControl(String stormName){
-        if (ValidateName(stormName)){
+        if (LocateIndex(stormName)){
             System.out.println(currentStorms);
             return "Displaying Storm Information";
         }
         return "Failed To Find Storm Name";
     }
+    //SEARCHING for Storm in ArrayList
 
+    //UPDATING a Storm in ArrayList
     public String UpdateOperationControl(String stormName){
-        if (ValidateName(stormName)){
+        if (LocateIndex(stormName)){
             System.out.println(currentStorms);
             return "Displaying Storm Information for Update";
         }
         return "Failed To Find Storm Name";
     }
 
+
+    //SAVING a Storm in ArrayList
     public String SaveOperationControl(String updStormName, String stormName, String stormWindSpeed, String stormTemp){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (ValidateName(updStormName)) {
+            if (LocateIndex(updStormName)) {
                 SaveOperation(stormName, stormWindSpeed, stormTemp);
                 System.out.println(currentStorms);
                 return "Added Storm Successfully";
@@ -133,4 +102,29 @@ public class Operations {
         sveStorm.stormTemp = stormTempIn;
         currentStorms.set(indexStorm, sveStorm);
     }
+    //SAVING a Storm in ArrayList
+    //UPDATING a Storm in ArrayList
+
+
+    //VALIDATING Input
+    public boolean ValidateInput(String stormName, String stormWindSpeed, String stormTemp){
+        if (validation.ValidateString(stormName) && validation.ValidateInteger(stormWindSpeed) && validation.ValidateInteger(stormTemp)){
+            return true;
+        }
+        return false;
+    }
+    //VALIDATING Input
+
+
+    //LOCATING Display Index
+    public boolean LocateIndex(String stormName) {
+        for (int i = 0; i < currentStorms.size(); i++) {
+            if (currentStorms.get(i).stormName.equals(stormName)) {
+                indexStorm = i;
+                return true;
+            }
+        }
+        return false;
+    }
+    //LOCATING Display Index
 }
