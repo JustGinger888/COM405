@@ -4,7 +4,10 @@ public class Operations {
 
     private Validation validation = new Validation();
 
-    public int indexStorm;
+    private int indexStorm;
+    public int getIndexStorm() {
+        return indexStorm;
+    }
 
     private ArrayList<Storm> currentStorms = new ArrayList<Storm>();
     public ArrayList<Storm> getCurrentStorms() {
@@ -111,20 +114,23 @@ public class Operations {
         return "Failed To Find Storm Name";
     }
 
-    public String UpdateSaveOperationControl(String stormName, String stormWindSpeed, String stormTemp, int dplValue){
+    public String SaveOperationControl(String updStormName, String stormName, String stormWindSpeed, String stormTemp){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            SaveOperation(stormName, stormWindSpeed, stormTemp,dplValue);
-            System.out.println(currentStorms);
-            return "Added Storm Successfully";
+            if (ValidateName(updStormName)) {
+                SaveOperation(stormName, stormWindSpeed, stormTemp);
+                System.out.println(currentStorms);
+                return "Added Storm Successfully";
+            }
+            return "issue here";
         }
         return "Failed To Verify Input, Ensure Everything Is Added Correct";
     }
 
-    public void SaveOperation(String stormNameIn, String stormWindSpeedIn, String stormTempIn, int dplValue){
-        Storm sveStrom= currentStorms.get(dplValue);
-        sveStrom.stormName = stormNameIn;
-        sveStrom.stormWindSpeed = stormWindSpeedIn;
-        sveStrom.stormTemp = stormTempIn;
-        currentStorms.set(dplValue, sveStrom);
+    public void SaveOperation(String stormNameIn, String stormWindSpeedIn, String stormTempIn){
+        Storm sveStorm= currentStorms.get(indexStorm);
+        sveStorm.stormName = stormNameIn;
+        sveStorm.stormWindSpeed = stormWindSpeedIn;
+        sveStorm.stormTemp = stormTempIn;
+        currentStorms.set(indexStorm, sveStorm);
     }
 }

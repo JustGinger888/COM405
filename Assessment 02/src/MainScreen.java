@@ -13,6 +13,7 @@ public class MainScreen extends JFrame implements ActionListener
     String typeOfStorm;
     int dplValue=0;
     int updValue=0;
+    String updStormName;
 
     private Operations operations = new Operations();
     private GridBagConstraints constraints;
@@ -45,8 +46,7 @@ public class MainScreen extends JFrame implements ActionListener
     private JPanel pnlButtons;
     private JPanel pnlDisplay;
 
-    public MainScreen()
-    {
+    public MainScreen() {
         this.setTitle("Storm Advice Centre");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         BoxLayout boxLayout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
@@ -316,7 +316,7 @@ public class MainScreen extends JFrame implements ActionListener
         ActionVariables();
         if (ev.getSource().equals(btnAdd)) {
             jtaDisplay.setText(null);
-            int confirmed = JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             Storm dplStorm = operations.getCurrentStorms().get(dplValue);
             dplValue++;
             jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed,stormTemp)+"\nName: "+stormName+"\nWind: "+stormWindSpeed+"\nTemp: "+stormTemp);
@@ -324,36 +324,38 @@ public class MainScreen extends JFrame implements ActionListener
 
         else if(ev.getSource().equals(btnRemove)) {
             jtaDisplay.setText(null);
-            int confirmed = JOptionPane.showConfirmDialog(null, operations.RemoveOperationControl(stormName), "Remove Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showConfirmDialog(null, operations.RemoveOperationControl(stormName), "Remove Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             dplValue--;
         }
 
         else if(ev.getSource().equals(btnSearch)){
             jtaDisplay.setText(null);
-            int confirmed = JOptionPane.showConfirmDialog(null, operations.SearchOperationControl(stormName), "Search Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-            Storm dplStorm = operations.getCurrentStorms().get(operations.indexStorm);
+            JOptionPane.showConfirmDialog(null, operations.SearchOperationControl(stormName), "Search Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            Storm dplStorm = operations.getCurrentStorms().get(operations.getIndexStorm());
             jtaDisplay.append(dplStorm.CategoryAdvice(dplStorm.stormWindSpeed,dplStorm.stormTemp)+"\nName: "+dplStorm.stormName+"\nWind: "+dplStorm.stormWindSpeed+"\nTemp: "+dplStorm.stormTemp);
         }
 
         else if(ev.getSource().equals(btnUpdate)) {
 
             jtaDisplay.setText(null);
-            int confirmed = JOptionPane.showConfirmDialog(null, operations.UpdateOperationControl(stormName), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-            Storm updValue = operations.getCurrentStorms().get(operations.indexStorm);
-            jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed,updValue.stormTemp)+"\nName: "+updValue.stormName+"\nWind: "+updValue.stormWindSpeed+"\nTemp: "+updValue.stormTemp);
+            JOptionPane.showConfirmDialog(null, operations.UpdateOperationControl(stormName), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            Storm updValue = operations.getCurrentStorms().get(operations.getIndexStorm());
+            updStormName = updValue.getStormName();
             txtStormName.setText(updValue.stormName);
             txtStormWind.setText(updValue.stormWindSpeed);
             txtStormTemp.setText(updValue.stormTemp);
+            jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed,updValue.stormTemp)+"\nName: "+updValue.stormName+"\nWind: "+updValue.stormWindSpeed+"\nTemp: "+updValue.stormTemp);
             UpdateComponents();
-            //UpdateActionPerformed(ev, dplValue);
         }
+
         else if (ev.getSource().equals(btnSave)){
             jtaDisplay.setText(null);
-            int confirmed = JOptionPane.showConfirmDialog(null, operations.UpdateSaveOperationControl(txtStormName.getText(),txtStormWind.getText(),txtStormTemp.getText(),updValue), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-            Storm updValue = operations.getCurrentStorms().get(operations.indexStorm);
+            JOptionPane.showConfirmDialog(null, operations.SaveOperationControl(updStormName, txtStormName.getText(),txtStormWind.getText(),txtStormTemp.getText()), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+            Storm updValue = operations.getCurrentStorms().get(operations.getIndexStorm());
             jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed,updValue.stormTemp)+"\nName: "+updValue.stormName+"\nWind: "+updValue.stormWindSpeed+"\nTemp: "+updValue.stormTemp);
             RevertUpdateComponents();
         }
+
         else if (ev.getSource().equals(btnEscape)){
             RevertUpdateComponents();
         }
