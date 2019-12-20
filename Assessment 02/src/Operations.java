@@ -108,7 +108,7 @@ public class Operations {
 
     //VALIDATING Input
     public boolean ValidateInput(String stormName, String stormWindSpeed, String stormTemp){
-        if (validation.ValidateString(stormName) && validation.ValidateInteger(stormWindSpeed) && validation.ValidateInteger(stormTemp)){
+        if (validation.ValidateString(stormName) && validation.ValidateInteger(stormWindSpeed) && validation.ValidateInteger(stormTemp) && validation.ValidateDuplicate(stormName, currentStorms)){
             return true;
         }
         return false;

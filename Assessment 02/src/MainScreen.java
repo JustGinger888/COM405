@@ -320,12 +320,14 @@ public class MainScreen extends JFrame implements ActionListener
             Storm dplStorm = operations.getCurrentStorms().get(dplValue);
             dplValue++;
             jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed,stormTemp)+"\nName: "+stormName+"\nWind: "+stormWindSpeed+"\nTemp: "+stormTemp);
+            RemoveTextFieldData();
         }
 
         else if(ev.getSource().equals(btnRemove)) {
             jtaDisplay.setText(null);
             JOptionPane.showConfirmDialog(null, operations.RemoveOperationControl(stormName), "Remove Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             dplValue--;
+            RemoveTextFieldData();
         }
 
         else if(ev.getSource().equals(btnSearch)){
@@ -333,19 +335,22 @@ public class MainScreen extends JFrame implements ActionListener
             JOptionPane.showConfirmDialog(null, operations.SearchOperationControl(stormName), "Search Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             Storm dplStorm = operations.getCurrentStorms().get(operations.getIndexStorm());
             jtaDisplay.append(dplStorm.CategoryAdvice(dplStorm.stormWindSpeed,dplStorm.stormTemp)+"\nName: "+dplStorm.stormName+"\nWind: "+dplStorm.stormWindSpeed+"\nTemp: "+dplStorm.stormTemp);
+            RemoveTextFieldData();
         }
 
         else if(ev.getSource().equals(btnUpdate)) {
 
             jtaDisplay.setText(null);
             JOptionPane.showConfirmDialog(null, operations.UpdateOperationControl(stormName), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-            Storm updValue = operations.getCurrentStorms().get(operations.getIndexStorm());
-            updStormName = updValue.getStormName();
-            txtStormName.setText(updValue.stormName);
-            txtStormWind.setText(updValue.stormWindSpeed);
-            txtStormTemp.setText(updValue.stormTemp);
-            jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed,updValue.stormTemp)+"\nName: "+updValue.stormName+"\nWind: "+updValue.stormWindSpeed+"\nTemp: "+updValue.stormTemp);
-            UpdateComponents();
+            if (operations.LocateIndex(stormName)) {
+                Storm updValue = operations.getCurrentStorms().get(operations.getIndexStorm());
+                updStormName = updValue.getStormName();
+                txtStormName.setText(updValue.stormName);
+                txtStormWind.setText(updValue.stormWindSpeed);
+                txtStormTemp.setText(updValue.stormTemp);
+                jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed, updValue.stormTemp) + "\nName: " + updValue.stormName + "\nWind: " + updValue.stormWindSpeed + "\nTemp: " + updValue.stormTemp);
+                UpdateComponents();
+            }
         }
 
         else if (ev.getSource().equals(btnSave)){
@@ -354,12 +359,19 @@ public class MainScreen extends JFrame implements ActionListener
             Storm updValue = operations.getCurrentStorms().get(operations.getIndexStorm());
             jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed,updValue.stormTemp)+"\nName: "+updValue.stormName+"\nWind: "+updValue.stormWindSpeed+"\nTemp: "+updValue.stormTemp);
             RevertUpdateComponents();
+            RemoveTextFieldData();
         }
 
         else if (ev.getSource().equals(btnEscape)){
             RevertUpdateComponents();
+            RemoveTextFieldData();
         }
 
     }
 
+    public void RemoveTextFieldData(){
+        txtStormName.setText(null);
+        txtStormWind.setText(null);
+        txtStormTemp.setText(null);
+    }
 }

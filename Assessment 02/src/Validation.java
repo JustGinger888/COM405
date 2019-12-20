@@ -14,6 +14,11 @@ public class Validation {
         return true;
     }
 
+    public boolean ValidateDuplicate(String tmp, ArrayList tmpList) {
+
+        return true;
+    }
+
 
     /*
     validating integer by attempting to parse it from its initial string input
