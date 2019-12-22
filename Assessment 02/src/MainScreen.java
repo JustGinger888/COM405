@@ -325,10 +325,12 @@ public class MainScreen extends JFrame implements ActionListener {
             if (!stormName.equals(null) && !stormWindSpeed.equals(null) && !stormTemp.equals(null) && !typeOfStorm.equals("--Select--")) {
                 jtaDisplay.setText(null);
                 JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-                Storm dplStorm = operations.getCurrentStorms().get(dplValue);
-                dplValue++;
-                jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed, stormTemp) + "\nName: " + stormName + "\nWind: " + stormWindSpeed + "\nTemp: " + stormTemp);
-                RemoveTextFieldData();
+                if (operations.ValidateAddition(stormName,stormWindSpeed,stormTemp)) {
+                    Storm dplStorm = operations.getCurrentStorms().get(dplValue);
+                    dplValue++;
+                    jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed, stormTemp) + "\nName: " + stormName + "\nWind: " + stormWindSpeed + "\nTemp: " + stormTemp);
+                    //RemoveTextFieldData();
+                }
             }
             else {
                 JOptionPane.showConfirmDialog(null, "Ensure ALL Fields Have An Input", "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -345,7 +347,7 @@ public class MainScreen extends JFrame implements ActionListener {
                 }
             }
             else{
-                JOptionPane.showConfirmDialog(null, "Ensure NAME Field Has  Input", "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "Ensure NAME Field Has  Input", "Remove Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             }
         }
 
@@ -360,7 +362,7 @@ public class MainScreen extends JFrame implements ActionListener {
                 }
             }
             else {
-                JOptionPane.showConfirmDialog(null, "Ensure NAME Field Has  Input", "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "Ensure NAME Field Has  Input", "Search Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             }
         }
 
@@ -389,16 +391,17 @@ public class MainScreen extends JFrame implements ActionListener {
                 jtaDisplay.setText(null);
                 JOptionPane.showConfirmDialog(null, operations.SaveOperationControl(updStormName, txtStormName.getText(), txtStormWind.getText(), txtStormTemp.getText()), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
                 Storm updValue = operations.getCurrentStorms().get(operations.getIndexStorm());
-                jtaDisplay.append(updValue.CategoryAdvice(updValue.stormWindSpeed, updValue.stormTemp) + "\nName: " + updValue.stormName + "\nWind: " + updValue.stormWindSpeed + "\nTemp: " + updValue.stormTemp);
                 RevertUpdateComponents();
                 RemoveTextFieldData();
             }
             else {
-                JOptionPane.showConfirmDialog(null, "Ensure ALL Available Fields Have An Input", "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showConfirmDialog(null, "Ensure ALL Available Fields Have An Input", "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             }
         }
 
         else if (ev.getSource().equals(btnEscape)){
+            jtaDisplay.setText(null);
+            JOptionPane.showConfirmDialog(null, "Escaping Update Procedure", "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
             RevertUpdateComponents();
             RemoveTextFieldData();
         }

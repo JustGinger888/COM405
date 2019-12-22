@@ -57,7 +57,7 @@ public class Operations {
         if (LocateIndex(stormName)){
             currentStorms.remove(indexStorm);
             System.out.println(currentStorms);
-            return "Select The Type Of Storm";
+            return "Storm Removed Successfully";
         }
         return "Failed To Find Storm Name";
     }
@@ -113,6 +113,15 @@ public class Operations {
     public boolean ValidateInput(String stormName, String stormWindSpeed, String stormTemp){
         if (validation.ValidateString(stormName) && validation.ValidateInteger(stormWindSpeed) && validation.ValidateInteger(stormTemp) && validation.ValidateDuplicate(stormName, currentStorms)){
             return true;
+        }
+        return false;
+    }
+
+    public boolean ValidateAddition(String stormName, String stormWindSpeed, String stormTemp){
+        if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
+            if (validation.ValidateStormSize(currentStorms)){
+                return true;
+            }
         }
         return false;
     }
