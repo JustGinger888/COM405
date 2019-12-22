@@ -1,4 +1,5 @@
 public class Blizzard extends Storm{
+
     public Blizzard(String stormNameIn, String stormWindSpeedIn, String stormTempIn){
         super(stormNameIn, stormWindSpeedIn, stormTempIn);
     }

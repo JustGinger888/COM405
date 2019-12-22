@@ -14,6 +14,7 @@ public class Operations {
         return currentStorms;
     }
 
+
     //ADDING a Storm to ArrayList
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
@@ -62,6 +63,7 @@ public class Operations {
     }
     //REMOVING a Storm from ArrayList
 
+
     //SEARCHING for Storm in ArrayList
     public String SearchOperationControl(String stormName){
         if (LocateIndex(stormName)){
@@ -71,6 +73,7 @@ public class Operations {
         return "Failed To Find Storm Name";
     }
     //SEARCHING for Storm in ArrayList
+
 
     //UPDATING a Storm in ArrayList
     public String UpdateOperationControl(String stormName){
@@ -127,4 +130,5 @@ public class Operations {
         return false;
     }
     //LOCATING Display Index
+
 }

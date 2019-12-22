@@ -1,4 +1,5 @@
 public abstract class Storm {
+
     protected String stormName;
     protected String stormWindSpeed;
     protected String stormTemp;
@@ -22,7 +23,7 @@ public abstract class Storm {
     }
 
     protected abstract int Calculations(String stormWindSpeedIn, String stormTempIn);
-    protected abstract String CategoryAdvice(String stormWindSpeedIn, String stormTempI);
 
+    protected abstract String CategoryAdvice(String stormWindSpeedIn, String stormTempI);
 
 }

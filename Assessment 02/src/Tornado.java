@@ -4,7 +4,6 @@ public class Tornado extends Storm {
         super(stormNameIn, stormWindSpeedIn, stormTempIn);
     }
 
-
     @Override
     protected int Calculations(String stormWindSpeedIn, String stormTempIn) {
         int windSpeed = Integer.parseInt(stormWindSpeedIn);
@@ -45,4 +44,5 @@ public class Tornado extends Storm {
         return "Error";
 
     }
+
 }

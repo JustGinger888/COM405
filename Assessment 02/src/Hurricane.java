@@ -1,11 +1,8 @@
-import java.util.stream.IntStream;
-
 public class Hurricane extends Storm{
 
     public Hurricane(String stormNameIn, String stormWindSpeedIn, String stormTempIn){
         super(stormNameIn, stormWindSpeedIn, stormTempIn);
     }
-
 
     @Override
     protected int Calculations(String stormWindSpeedIn, String stormTempIn) {
