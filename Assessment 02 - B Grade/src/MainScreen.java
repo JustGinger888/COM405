@@ -140,6 +140,8 @@ public class MainScreen extends JFrame implements ActionListener {
         btnEscape.setBackground(null);
         cbxStormType.setEnabled(false);
         cbxStormType.setBackground(Color.lightGray);
+        txtStormName.setEnabled(false);
+        txtStormName.setBackground(Color.lightGray);
     }
 
     private void RevertUpdateComponents(){
@@ -157,6 +159,8 @@ public class MainScreen extends JFrame implements ActionListener {
         btnEscape.setBackground(Color.lightGray);
         cbxStormType.setEnabled(true);
         cbxStormType.setBackground(Color.white);
+        txtStormName.setEnabled(true);
+        txtStormName.setBackground(Color.white);
 
         btnAdd.setPreferredSize(new Dimension(148, 28));
 
@@ -388,10 +392,12 @@ public class MainScreen extends JFrame implements ActionListener {
 
         else if (ev.getSource().equals(btnSave)){
             if (!stormName.equals(null) && !stormWindSpeed.equals(null) && !stormTemp.equals(null)) {
-                jtaDisplay.setText(null);
                 JOptionPane.showConfirmDialog(null, operations.SaveOperationControl(updStormName, txtStormName.getText(), txtStormWind.getText(), txtStormTemp.getText()), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-                RevertUpdateComponents();
-                RemoveTextFieldData();
+                if (operations.ValidateAddition(stormName, stormWindSpeed, stormTemp)) {
+                    jtaDisplay.setText(null);
+                    RevertUpdateComponents();
+                    RemoveTextFieldData();
+                }
             }
             else {
                 JOptionPane.showConfirmDialog(null, "Ensure ALL Available Fields Have An Input", "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);

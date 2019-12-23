@@ -22,12 +22,12 @@ public class Operations {
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
             if (validation.ValidateStormSize(currentStorms)){
                 if (validation.ValidateStormType(typeOfStorm) != 4) {
-                    if (DuplicateCheck(stormName)) {
+                    //if (DuplicateCheck(stormName)) {
                         StormAddition(stormName, stormWindSpeed, stormTemp, validation.ValidateStormType(typeOfStorm));
                         System.out.println(currentStorms);
                         return "Added Storm Successfully";
-                    }
-                    return "Storm Name Already In Use";
+                    //}
+                    //return "Storm Name Already In Use";
                 }
                 return "Select The Type Of Storm";
             }
@@ -93,12 +93,12 @@ public class Operations {
     //SAVING a Storm in ArrayList
     public String SaveOperationControl(String updStormName, String stormName, String stormWindSpeed, String stormTemp){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (LocateIndex(updStormName)) {
+            if (LocateIndex(updStormName) ){    //&& DuplicateCheck(stormName)) {
                 SaveOperation(stormName, stormWindSpeed, stormTemp);
                 System.out.println(currentStorms);
-                return "Added Storm Successfully";
+                return "Updated Storm Successfully";
             }
-            return "issue here";
+            return "Ensure Storm Name Is Not Already In Use";
         }
         return "Failed To Verify Input, Ensure Everything Is Added Correct";
     }
@@ -125,9 +125,9 @@ public class Operations {
     public boolean ValidateAddition(String stormName, String stormWindSpeed, String stormTemp){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
             if (validation.ValidateStormSize(currentStorms)) {
-                if (DuplicateCheck(stormName)) {
+                //if (DuplicateCheck(stormName)) {
                     return true;
-                }
+                //}
             }
         }
         return false;
@@ -148,14 +148,19 @@ public class Operations {
     //LOCATING Display Index
 
 
-    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
+    /*Validate There is no Duplicates by Checking Whether the List Contains The Same Name
     public boolean DuplicateCheck(String stormName) {
+        int count = 0;
         for (int i = 0; i < currentStorms.size(); i++) {
             if (currentStorms.get(i).stormName.equals(stormName)) {
+                count++;
+                if (count == 2) {
                     return false;
+                }
             }
         }
         return true;
     }
-    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
+    Validate There is no Duplicates by Checking Whether the List Contains The Same Name */
+
 }
