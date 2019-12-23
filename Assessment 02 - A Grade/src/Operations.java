@@ -22,7 +22,7 @@ public class Operations {
     //ADDING a Storm to ArrayList
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (validation.ValidateStormSize(currentStorms)){
+            //if (validation.ValidateStormSize(currentStorms)){
                 if (validation.ValidateStormType(typeOfStorm) != 4) {
                     if (DuplicateCheck(stormName)) {
                         StormAddition(stormName, stormWindSpeed, stormTemp, validation.ValidateStormType(typeOfStorm));
@@ -32,8 +32,8 @@ public class Operations {
                     return "Storm Name Already In Use";
                 }
                 return "Select The Type Of Storm";
-            }
-            return "Storm Exceeds Maximum Array Size";
+            //}
+            //return "Storm Exceeds Maximum Array Size";
         }
         return "Failed To Verify Input, Ensure Everything Is Added Correct";
     }
@@ -126,20 +126,20 @@ public class Operations {
 
     public boolean ValidateAddition(String stormName, String stormWindSpeed, String stormTemp, int dplValue){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (validation.ValidateStormSize(currentStorms)) {
+            //if (validation.ValidateStormSize(currentStorms)) {
                 if (AltDuplicateCheck(stormName, dplValue)) {
                     return true;
                 }
-            }
+            //}
         }
         return false;
     }
 
     public boolean ValidateSaving(String stormName, String stormWindSpeed, String stormTemp){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (validation.ValidateStormSize(currentStorms)) {
+            //if (validation.ValidateStormSize(currentStorms)) {
                 return true;
-            }
+            //}
         }
         return false;
     }
