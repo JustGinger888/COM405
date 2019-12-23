@@ -13,7 +13,9 @@ public class Operations {
     public ArrayList<Storm> getCurrentStorms() {
         return currentStorms;
     }
-
+    public void setCurrentStorms(ArrayList<Storm> currentStorms) {
+        this.currentStorms = currentStorms;
+    }
 
     //ADDING a Storm to ArrayList
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
@@ -148,13 +150,9 @@ public class Operations {
 
     //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
     public boolean DuplicateCheck(String stormName) {
-        int count=0;
         for (int i = 0; i < currentStorms.size(); i++) {
             if (currentStorms.get(i).stormName.equals(stormName)) {
-                count++;
-                if (count == 2) {
                     return false;
-                }
             }
         }
         return true;
