@@ -17,7 +17,7 @@ public class Validation {
             System.out.println("Invalid input, numbers only");
             return false;
         }
-        if (Integer.parseInt(tmp) > -1000 && Integer.parseInt(tmp) < 1000) {
+        if (Integer.parseInt(tmp) > -500 && Integer.parseInt(tmp) < 500) {
             return true;
         }
         else{

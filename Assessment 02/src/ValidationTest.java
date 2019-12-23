@@ -8,6 +8,13 @@ class ValidationTest {
 
     @Test
     void validateInteger() {
+        Validation validation = new Validation();
+
+        assertEquals(false, validation.ValidateInteger("abc"));
+        assertEquals(false, validation.ValidateInteger("500"));
+        assertEquals(false, validation.ValidateInteger("-500"));
+        assertEquals(true, validation.ValidateInteger("10"));
+        assertEquals(true, validation.ValidateInteger("-10"));
     }
 
     @Test
@@ -57,6 +64,11 @@ class ValidationTest {
 
     @Test
     void validateStormType() {
+        Validation validation = new Validation();
 
+        assertEquals(1, validation.ValidateStormType("Hurricane"));
+        assertEquals(2, validation.ValidateStormType("Tornado"));
+        assertEquals(3, validation.ValidateStormType("Blizzard"));
+        assertEquals(4, validation.ValidateStormType("Other"));
     }
 }
