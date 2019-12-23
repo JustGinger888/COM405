@@ -27,14 +27,14 @@ public class Validation {
     //VALIDATE Integer by Attempting to Parse it from Its Initial String Input
 
 
-    /*VALIDATE The Size Of A Storm
+    //VALIDATE The Size Of A Storm
     public boolean ValidateStormSize(ArrayList currentStorms){
         if (currentStorms.size() > 20){
             return false;
         }
         return true;
     }
-    VALIDATE The Size Of A Storm*/
+    //VALIDATE The Size Of A Storm
 
 
     //VALIDATE That A Storm Has Been Chosen

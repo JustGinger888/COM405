@@ -124,10 +124,10 @@ public class Operations {
         return false;
     }
 
-    public boolean ValidateAddition(String stormName, String stormWindSpeed, String stormTemp){
+    public boolean ValidateAddition(String stormName, String stormWindSpeed, String stormTemp, int dplValue){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
             if (validation.ValidateStormSize(currentStorms)) {
-                if (DuplicateCheck(stormName)) {
+                if (AltDuplicateCheck(stormName, dplValue)) {
                     return true;
                 }
             }
@@ -163,6 +163,16 @@ public class Operations {
     public boolean DuplicateCheck(String stormName) {
         for (int i = 0; i < currentStorms.size(); i++) {
             if (currentStorms.get(i).stormName.equals(stormName)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean AltDuplicateCheck(String stormName, int dplValue) {
+        for (int i = 0; i < currentStorms.size(); i++) {
+            if (currentStorms.get(i).stormName.equals(stormName) && i != dplValue) {
                 return false;
             }
         }

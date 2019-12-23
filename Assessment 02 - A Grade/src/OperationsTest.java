@@ -52,7 +52,7 @@ class OperationsTest {
         assertEquals(false, operations.LocateIndex("None"));
     }
 
-    /*@Test
+    @Test
     void duplicateCheck() {
         Operations operations = new Operations();
         Blizzard tst1 = new Blizzard("Test","35","-10");
@@ -66,5 +66,5 @@ class OperationsTest {
         tstLst.add(tst2);
         operations.setCurrentStorms(tstLst);
         assertEquals(false, operations.DuplicateCheck("Test"));
-    }*/
+    }
 }
