@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class Validation {
 
-    //Validate String by Checking Whether it Contains a Number
+    //Validate String Not Implemented
     public boolean ValidateString(String tmp) {
         return true;
     }
-    //Validate String by Checking Whether it Contains a Number
+    //Validate String Not Implemented
 
 
     //VALIDATE Integer by Attempting to Parse it from Its Initial String Input

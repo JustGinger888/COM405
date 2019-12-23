@@ -9,7 +9,7 @@ public class Tornado extends Storm {
         int windSpeed = Integer.parseInt(stormWindSpeedIn);
         if (40 <= windSpeed && windSpeed <= 72) {
             return 0;
-        } else if (73 <= windSpeed && windSpeed <= 112) {
+        } else if (73 <= windSpeed && windSpeed <= 111) {
             return 1;
         } else if (112 <= windSpeed && windSpeed <= 157) {
             return 2;

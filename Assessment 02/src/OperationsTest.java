@@ -1,48 +1,51 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class OperationsTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void addOperationControl() {
+        ;
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void stormAddition() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void removeOperationControl() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void searchOperationControl() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void updateOperationControl() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void saveOperationControl() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void saveOperation() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void validateInput() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void validateAddition() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void locateIndex() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void duplicateCheck() {
     }
 }
