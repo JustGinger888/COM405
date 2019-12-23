@@ -325,7 +325,7 @@ public class MainScreen extends JFrame implements ActionListener {
             if (!stormName.equals(null) && !stormWindSpeed.equals(null) && !stormTemp.equals(null) && !typeOfStorm.equals("--Select--")) {
                 jtaDisplay.setText(null);
                 JOptionPane.showConfirmDialog(null, operations.AddOperationControl(stormName, stormWindSpeed, stormTemp, typeOfStorm), "Add Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-                if (operations.ValidateAddition(stormName,stormWindSpeed,stormTemp) && operations.DuplicateCheck(stormName)) {
+                if (operations.ValidateAddition(stormName,stormWindSpeed,stormTemp)) {
                     Storm dplStorm = operations.getCurrentStorms().get(dplValue);
                     dplValue++;
                     jtaDisplay.append(dplStorm.CategoryAdvice(stormWindSpeed, stormTemp) + "\nName: " + stormName + "\nWind: " + stormWindSpeed + "\nTemp: " + stormTemp);
@@ -390,7 +390,6 @@ public class MainScreen extends JFrame implements ActionListener {
             if (!stormName.equals(null) && !stormWindSpeed.equals(null) && !stormTemp.equals(null)) {
                 jtaDisplay.setText(null);
                 JOptionPane.showConfirmDialog(null, operations.SaveOperationControl(updStormName, txtStormName.getText(), txtStormWind.getText(), txtStormTemp.getText()), "Update Storm Message Box", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE);
-                Storm updValue = operations.getCurrentStorms().get(operations.getIndexStorm());
                 RevertUpdateComponents();
                 RemoveTextFieldData();
             }

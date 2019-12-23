@@ -122,8 +122,10 @@ public class Operations {
 
     public boolean ValidateAddition(String stormName, String stormWindSpeed, String stormTemp){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (validation.ValidateStormSize(currentStorms)){
-                return true;
+            if (validation.ValidateStormSize(currentStorms)) {
+                if (DuplicateCheck(stormName)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -146,9 +148,13 @@ public class Operations {
 
     //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
     public boolean DuplicateCheck(String stormName) {
+        int count=0;
         for (int i = 0; i < currentStorms.size(); i++) {
-            if (currentStorms.get(i).stormName.equals(stormName)){
-                return false;
+            if (currentStorms.get(i).stormName.equals(stormName)) {
+                count++;
+                if (count == 2) {
+                    return false;
+                }
             }
         }
         return true;
