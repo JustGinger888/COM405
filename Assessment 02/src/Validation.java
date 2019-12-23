@@ -9,13 +9,6 @@ public class Validation {
     //Validate String by Checking Whether it Contains a Number
 
 
-    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
-    public boolean ValidateDuplicate(String tmp, ArrayList tmpList) {
-        return true;
-    }
-    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
-
-
     //VALIDATE Integer by Attempting to Parse it from Its Initial String Input
     public boolean ValidateInteger(String tmp) {
         try {
@@ -23,9 +16,13 @@ public class Validation {
         } catch (Exception e) {
             System.out.println("Invalid input, numbers only");
             return false;
-
         }
-        return true;
+        if (Integer.parseInt(tmp) > -1000 && Integer.parseInt(tmp) < 1000) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     //VALIDATE Integer by Attempting to Parse it from Its Initial String Input
 

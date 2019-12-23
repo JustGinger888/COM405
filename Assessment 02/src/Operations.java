@@ -19,10 +19,13 @@ public class Operations {
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
             if (validation.ValidateStormSize(currentStorms)){
-                if (validation.ValidateStormType(typeOfStorm) != 4){
-                    StormAddition(stormName, stormWindSpeed, stormTemp, validation.ValidateStormType(typeOfStorm));
-                    System.out.println(currentStorms);
-                    return "Added Storm Successfully";
+                if (validation.ValidateStormType(typeOfStorm) != 4) {
+                    if (DuplicateCheck(stormName)) {
+                        StormAddition(stormName, stormWindSpeed, stormTemp, validation.ValidateStormType(typeOfStorm));
+                        System.out.println(currentStorms);
+                        return "Added Storm Successfully";
+                    }
+                    return "Storm Name Already In Use";
                 }
                 return "Select The Type Of Storm";
             }
@@ -111,7 +114,7 @@ public class Operations {
 
     //VALIDATING Input
     public boolean ValidateInput(String stormName, String stormWindSpeed, String stormTemp){
-        if (validation.ValidateString(stormName) && validation.ValidateInteger(stormWindSpeed) && validation.ValidateInteger(stormTemp) && validation.ValidateDuplicate(stormName, currentStorms)){
+        if (validation.ValidateString(stormName) && validation.ValidateInteger(stormWindSpeed) && validation.ValidateInteger(stormTemp)){
             return true;
         }
         return false;
@@ -140,4 +143,15 @@ public class Operations {
     }
     //LOCATING Display Index
 
+
+    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
+    public boolean DuplicateCheck(String stormName) {
+        for (int i = 0; i < currentStorms.size(); i++) {
+            if (currentStorms.get(i).stormName.equals(stormName)){
+                return false;
+            }
+        }
+        return true;
+    }
+    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
 }
