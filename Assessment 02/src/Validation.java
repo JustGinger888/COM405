@@ -29,7 +29,7 @@ public class Validation {
 
     //VALIDATE The Size Of A Storm
     public boolean ValidateStormSize(ArrayList currentStorms){
-        if (currentStorms.size() >= 20){
+        if (currentStorms.size() > 20){
             return false;
         }
         return true;
