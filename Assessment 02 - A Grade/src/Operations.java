@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Operations {
 
@@ -20,7 +22,7 @@ public class Operations {
     //ADDING a Storm to ArrayList
     public String AddOperationControl(String stormName, String stormWindSpeed, String stormTemp, String typeOfStorm){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (validation.ValidateStormSize(currentStorms)){
+            //if (validation.ValidateStormSize(currentStorms)){
                 if (validation.ValidateStormType(typeOfStorm) != 4) {
                     //if (DuplicateCheck(stormName)) {
                         StormAddition(stormName, stormWindSpeed, stormTemp, validation.ValidateStormType(typeOfStorm));
@@ -30,8 +32,8 @@ public class Operations {
                     //return "Storm Name Already In Use";
                 }
                 return "Select The Type Of Storm";
-            }
-            return "Storm Exceeds Maximum Array Size";
+            //}
+            //return "Storm Exceeds Maximum Array Size";
         }
         return "Failed To Verify Input, Ensure Everything Is Added Correct";
     }
@@ -124,11 +126,11 @@ public class Operations {
 
     public boolean ValidateAddition(String stormName, String stormWindSpeed, String stormTemp){
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
-            if (validation.ValidateStormSize(currentStorms)) {
+            //if (validation.ValidateStormSize(currentStorms)) {
                 //if (DuplicateCheck(stormName)) {
                     return true;
                 //}
-            }
+            //}
         }
         return false;
     }
@@ -148,19 +150,15 @@ public class Operations {
     //LOCATING Display Index
 
 
-    /*Validate There is no Duplicates by Checking Whether the List Contains The Same Name
+    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name
     public boolean DuplicateCheck(String stormName) {
-        int count = 0;
-        for (int i = 0; i < currentStorms.size(); i++) {
-            if (currentStorms.get(i).stormName.equals(stormName)) {
-                count++;
-                if (count == 2) {
-                    return false;
-                }
-            }
+        Set<Storm> set = new HashSet<Storm>(currentStorms);
+
+        if(set.size() < currentStorms.size()){
+            return false;
         }
         return true;
     }
-    Validate There is no Duplicates by Checking Whether the List Contains The Same Name */
+    //Validate There is no Duplicates by Checking Whether the List Contains The Same Name */
 
 }
