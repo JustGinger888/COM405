@@ -36,10 +36,14 @@ public class MainScreen extends JFrame implements ActionListener {
 
     private JTextArea jtaDisplay;
 
+    private JList jliStormList;
+    private JScrollPane jPane;
+
     private JPanel pnlStormChoice;
     private JPanel pnlStormInfo;
     private JPanel pnlButtons;
     private JPanel pnlDisplay;
+    private JPanel pnlList;
 
 
     //INITIALISING Main Screen
@@ -59,6 +63,7 @@ public class MainScreen extends JFrame implements ActionListener {
         createStormPanel();
         createButtonPanel();
         createDisplayPanel();
+        createListPanel();
 
         this.pack();
         this.setLocationRelativeTo(null);
@@ -115,11 +120,18 @@ public class MainScreen extends JFrame implements ActionListener {
         jtaDisplay.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         jtaDisplay.setEditable(false);
 
+        //JList
+        jliStormList = new JList();
+        jliStormList.setFixedCellWidth(300);
+        jliStormList.setFixedCellHeight(20);
+        jPane = new JScrollPane(jliStormList);
+
         //Panels
         pnlStormChoice = new JPanel(new GridBagLayout());
         pnlStormInfo = new JPanel(new GridBagLayout());
         pnlButtons = new JPanel(new GridBagLayout());
         pnlDisplay = new JPanel(new GridBagLayout());
+        pnlList = new JPanel(new GridBagLayout());
     }
     //INITIALISING Main Screen
 
@@ -305,10 +317,31 @@ public class MainScreen extends JFrame implements ActionListener {
         pnlDisplay.add(jtaDisplay, constraints);
 
         // Border
-        pnlDisplay.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "Storm Information"));
+        pnlDisplay.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Storm Information"));
 
         this.add(pnlDisplay);
+
+    }
+
+    private void createListPanel() {
+        GridBagConstraints constraints = new GridBagConstraints();
+        pnlDisplay.setLayout(new GridBagLayout());
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets = new Insets(10, 10, 10, 10);
+
+        //Storm Add Button
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.gridy = 0;
+        constraints.gridx = 0;
+        jPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        pnlList.add(jPane, constraints);
+
+        // Border
+        pnlList.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Storm Listing"));
+
+        // set flow layout for the frame
+
+        this.add(pnlList);
 
     }
     //CREATING Panels
@@ -410,9 +443,22 @@ public class MainScreen extends JFrame implements ActionListener {
             RevertUpdateComponents();
             RemoveTextFieldData();
         }
+        UpdateList();
     }
     //ACTION On Click
 
+    DefaultListModel<String> model;
+
+    public void UpdateList(){
+        model = new DefaultListModel<String>();
+        for(Storm s : operations.getCurrentStorms()){
+            model.addElement(s.toString() +" | Name: "+ s.getStormName());
+        }
+        jliStormList.setModel(model);
+        jliStormList.setSelectedIndex(0);
+        //jliStormList = new JList(operations.getCurrentStorms().toArray());
+        jPane.getViewport().add(jliStormList);
+    }
 
     //CLEARING Input
     public void RemoveTextFieldData(){

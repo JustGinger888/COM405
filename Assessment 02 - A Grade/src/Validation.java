@@ -4,6 +4,9 @@ public class Validation {
 
     //Validate String Not Implemented
     public boolean ValidateString(String tmp) {
+        if (tmp.length() > 16){
+            return false;
+        }
         return true;
     }
     //Validate String Not Implemented

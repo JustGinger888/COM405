@@ -35,7 +35,7 @@ public class Operations {
             //}
             //return "Storm Exceeds Maximum Array Size";
         }
-        return "Failed To Verify Input, Ensure Everything Is Added Correct";
+        return "Failed Input Verification, please ensure that:\n - All field are filled\n - Name is under 16 characters\n - Integers are in the range -500 to 500";
     }
 
     public void StormAddition(String stormName, String stormWindSpeed, String stormTemp, int StormType){
@@ -102,7 +102,7 @@ public class Operations {
             }
             return "Ensure Storm Name Is Not Already In Use";
         }
-        return "Failed To Verify Input, Ensure Everything Is Added Correct";
+        return "Failed Input Verification, please ensure that:\n - All field are filled\n - Name is under 16 characters\n - Integers are in the range -500 to 500";
     }
 
     public void SaveOperation(String stormNameIn, String stormWindSpeedIn, String stormTempIn){
