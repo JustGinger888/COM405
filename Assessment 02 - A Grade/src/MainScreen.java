@@ -122,7 +122,7 @@ public class MainScreen extends JFrame implements ActionListener {
 
         //JList
         jliStormList = new JList();
-        jliStormList.setFixedCellWidth(300);
+        jliStormList.setFixedCellWidth(298);
         jliStormList.setFixedCellHeight(20);
         jPane = new JScrollPane(jliStormList);
 
@@ -308,7 +308,7 @@ public class MainScreen extends JFrame implements ActionListener {
         GridBagConstraints constraints = new GridBagConstraints();
         pnlDisplay.setLayout(new GridBagLayout());
         constraints.anchor = GridBagConstraints.WEST;
-        constraints.insets = new Insets(10, 10, 10, 10);
+        constraints.insets = new Insets(1, 10, 1, 10);
 
         //Storm Add Button
         constraints.fill = GridBagConstraints.NONE;
@@ -452,7 +452,7 @@ public class MainScreen extends JFrame implements ActionListener {
     public void UpdateList(){
         model = new DefaultListModel<String>();
         for(Storm s : operations.getCurrentStorms()){
-            model.addElement(s.toString() +" | Name: "+ s.getStormName());
+            model.addElement(s.toString() +"  |  Name: "+ s.getStormName());
         }
         jliStormList.setModel(model);
         jliStormList.setSelectedIndex(0);
