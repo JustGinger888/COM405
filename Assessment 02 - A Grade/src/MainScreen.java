@@ -12,6 +12,7 @@ public class MainScreen extends JFrame implements ActionListener {
     private String typeOfStorm;
     private String updStormName;
     private int dplValue=0;
+    DefaultListModel<String> model;
 
     private Operations operations = new Operations();
 
@@ -447,8 +448,8 @@ public class MainScreen extends JFrame implements ActionListener {
     }
     //ACTION On Click
 
-    DefaultListModel<String> model;
 
+    //Updating List Containing Storms
     public void UpdateList(){
         model = new DefaultListModel<String>();
         for(Storm s : operations.getCurrentStorms()){
@@ -459,6 +460,8 @@ public class MainScreen extends JFrame implements ActionListener {
         //jliStormList = new JList(operations.getCurrentStorms().toArray());
         jPane.getViewport().add(jliStormList);
     }
+    //Updating List Containing Storms
+
 
     //CLEARING Input
     public void RemoveTextFieldData(){
