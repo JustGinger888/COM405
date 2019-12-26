@@ -17,7 +17,7 @@ public class Validation {
         try {
             Integer.parseInt(tmp);
         } catch (Exception e) {
-            System.out.println("Invalid input, numbers only");
+            //System.out.println("Invalid input, numbers only");
             return false;
         }
         if (Integer.parseInt(tmp) > -500 && Integer.parseInt(tmp) < 500) {

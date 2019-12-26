@@ -26,7 +26,7 @@ public class Operations {
                 if (validation.ValidateStormType(typeOfStorm) != 4) {
                     if (DuplicateCheck(stormName)) {
                         StormAddition(stormName, stormWindSpeed, stormTemp, validation.ValidateStormType(typeOfStorm));
-                        System.out.println(currentStorms);
+                        //System.out.println(currentStorms);
                         return "Added Storm Successfully";
                     }
                     return "Storm Name Already In Use";
@@ -63,7 +63,7 @@ public class Operations {
         //Add double name checker
         if (LocateIndex(stormName)){
             currentStorms.remove(indexStorm);
-            System.out.println(currentStorms);
+            //System.out.println(currentStorms);
             return "Storm Removed Successfully";
         }
         return "Failed To Find Storm Name";
@@ -74,7 +74,7 @@ public class Operations {
     //SEARCHING for Storm in ArrayList
     public String SearchOperationControl(String stormName){
         if (LocateIndex(stormName)){
-            System.out.println(currentStorms);
+            //System.out.println(currentStorms);
             return "Displaying Storm Information";
         }
         return "Failed To Find Storm Name";
@@ -85,7 +85,7 @@ public class Operations {
     //UPDATING a Storm in ArrayList
     public String UpdateOperationControl(String stormName){
         if (LocateIndex(stormName)){
-            System.out.println(currentStorms);
+            //System.out.println(currentStorms);
             return "Displaying Storm Information for Update";
         }
         return "Failed To Find Storm Name";
@@ -97,7 +97,7 @@ public class Operations {
         if (ValidateInput(stormName, stormWindSpeed, stormTemp)){
             if (LocateIndex(updStormName) ) {
                 SaveOperation(stormName, stormWindSpeed, stormTemp);
-                System.out.println(currentStorms);
+                //System.out.println(currentStorms);
                 return "Updated Storm Successfully";
             }
             return "Ensure Storm Name Is Not Already In Use";
