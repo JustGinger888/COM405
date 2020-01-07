@@ -11,7 +11,7 @@ class OperationsTest {
         Operations operations = new Operations();
         assertEquals("Added Storm Successfully",operations.AddOperationControl("Name", "10", "10", "Hurricane"));
         assertEquals("Select The Type Of Storm",operations.AddOperationControl("Name", "10", "10", "Other"));
-        assertEquals("Failed To Verify Input, Ensure Everything Is Added Correct",operations.AddOperationControl("Name", "10a", "10b", "Hurricane"));
+        assertEquals("Failed Input Verification, please ensure that:\n - All field are filled\n - Name is under 16 characters\n - Integers are in the range -500 to 500",operations.AddOperationControl("Name", "10a", "10b", "Hurricane"));
     }
 
     @Test
