@@ -8,7 +8,7 @@ An electronic system that allows a users to enter the details of a dog, includei
 * age, 
 * gender, 
 * breed 
-* general notes. 
+* general notes.    
 Once the details have been entered the dog will be assigned to an empty enclosure. If there are no empty enclosures, the system should alert the user.
 
 The system will need to store the following information on the enclosures:
@@ -22,11 +22,11 @@ Whilst entering the details for the dog, the user should also enter the number o
 A system that allows their advisors to keep track of current storms as they are made aware of them. They need to log a:
 * storms name, 
 * the wind speed 
-* the temperature. 
+* the temperature.    
 The storm is then be added to a list of ‘current storms.’ As this is a prototype/test system, they are also only interested in covering tornados, hurricanes and blizzards for now.
 
 The advisers should be able to enter a storm name that will then bring up information about that storm. This will include: 
 * The classification of the storm 
-* This which will be calculated based on the current storm data. 
+* This which will be calculated based on the current storm data.    
 It should also give an advisory prompt that is based on the current classification of the storm. Additionally, they need a facility to remove a storm from the list by entering its name.
 Finally, storm information can change and therefore, an edit storm feature is required. The user can get a storms information by entering its name – its details should be shown in text fields, allowing the user to change and update the storm data in the system
